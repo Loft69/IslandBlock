@@ -9,7 +9,7 @@ public final class UserFactory {
     @org.jetbrains.annotations.NotNull
     @org.jetbrains.annotations.Contract("_ -> new")
     public User createUser(@NonNull Player player) {
-        return new User(player, null, null);
+        return new User(player, null, null, null);
     }
 
 }

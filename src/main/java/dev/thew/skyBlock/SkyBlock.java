@@ -1,6 +1,7 @@
 package dev.thew.skyBlock;
 
 import dev.thew.skyBlock.service.ServiceInitializer;
+import dev.thew.skyBlock.service.island.IslandService;
 import dev.thew.skyBlock.service.user.UserService;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -15,6 +16,7 @@ public final class SkyBlock extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
+        ServiceInitializer.registerService(IslandService.getInstance());
         ServiceInitializer.registerService(UserService.getInstance());
 
         ServiceInitializer.initializeServices();
@@ -22,7 +24,7 @@ public final class SkyBlock extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        ServiceInitializer.shutdownServices();
     }
 
     public static void runTask(Runnable runnable, boolean async) {

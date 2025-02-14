@@ -1,28 +1,26 @@
 package dev.thew.skyBlock.service.user;
 
 import dev.thew.skyBlock.model.User;
+import lombok.NonNull;
 import org.bukkit.entity.Player;
 
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class UserRegistry {
 
-    private final ConcurrentHashMap<Player, User> userMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Player, User> users = new ConcurrentHashMap<>();
 
-    public void registryUser(Player player, User data) {
-        userMap.put(player, data);
+    public boolean registryUser(Player player, @NonNull User user) {
+        return users.put(player, user) == null;
     }
 
-    public User getData(Player player) {
-        return userMap.get(player);
+    public boolean unregisterUser(Player player) {
+        return users.remove(player) != null;
     }
 
-    public void unregisterUser(Player player) {
-        userMap.remove(player);
+    public User getUser(Player player) {
+        return users.get(player);
     }
 
-    public boolean userExist(Player player) {
-        return userMap.containsKey(player);
-    }
 
 }
