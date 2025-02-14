@@ -1,0 +1,12 @@
+name: SkyBlock
+version: '1.0'
+main: dev.thew.skyBlock.SkyBlock
+api-version: '1.20'
+authors: [ Thew ]
+commands:
+  island:
+    default: true
+    aliases:
+      - is
+      - id
+      - plot
